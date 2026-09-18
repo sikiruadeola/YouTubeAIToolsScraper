@@ -1,0 +1,37 @@
+{
+  "title": "YouTube AI Tools Channel Scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "searchQuery": {
+      "title": "Search term",
+      "type": "string",
+      "description": "The keyword phrase to search YouTube channels for",
+      "default": "AI tools and automation"
+    },
+    "apiKeys": {
+      "title": "YouTube Data API keys",
+      "type": "array",
+      "description": "One or more YouTube Data API v3 keys. The actor rotates to the next one automatically once one runs out of daily quota.",
+      "editor": "stringList"
+    },
+    "minSubscribers": {
+      "title": "Minimum subscribers",
+      "type": "integer",
+      "default": 1
+    },
+    "maxSubscribers": {
+      "title": "Maximum subscribers",
+      "type": "integer",
+      "default": 600
+    },
+    "maxChannels": {
+      "title": "Maximum channels to save (0 = unlimited)",
+      "type": "integer",
+      "default": 0
+    }
+  },
+  "required": [
+    "apiKeys"
+  ]
+}
