@@ -7,6 +7,7 @@
       "title": "Search term",
       "type": "string",
       "description": "The keyword phrase to search YouTube channels for",
+      "editor": "textfield",
       "default": "AI tools and automation"
     },
     "apiKeys": {
@@ -18,16 +19,19 @@
     "minSubscribers": {
       "title": "Minimum subscribers",
       "type": "integer",
+      "editor": "number",
       "default": 1
     },
     "maxSubscribers": {
       "title": "Maximum subscribers",
       "type": "integer",
+      "editor": "number",
       "default": 600
     },
     "maxChannels": {
       "title": "Maximum channels to save (0 = unlimited)",
       "type": "integer",
+      "editor": "number",
       "default": 0
     }
   },
