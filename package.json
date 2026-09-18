@@ -1,0 +1,16 @@
+{
+  "name": "youtube-ai-tools-scraper",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "apify": "^3.7.2"
+  },
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}
