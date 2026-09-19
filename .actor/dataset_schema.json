@@ -1,0 +1,36 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Contacts found",
+            "transformation": {
+                "fields": [
+                    "channelTitle",
+                    "handle",
+                    "subscribers",
+                    "bestEmail",
+                    "bestEmailConfidence",
+                    "bestEmailScore",
+                    "bestEmailFoundOn",
+                    "linkedSites",
+                    "channelUrl"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "channelTitle": { "label": "Channel" },
+                    "handle": { "label": "Handle" },
+                    "subscribers": { "label": "Subscribers" },
+                    "bestEmail": { "label": "Best email" },
+                    "bestEmailConfidence": { "label": "Confidence" },
+                    "bestEmailScore": { "label": "Score" },
+                    "bestEmailFoundOn": { "label": "Found on" },
+                    "linkedSites": { "label": "Websites" },
+                    "channelUrl": { "label": "Channel URL" }
+                }
+            }
+        }
+    }
+}
