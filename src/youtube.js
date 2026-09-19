@@ -247,6 +247,7 @@ function pickLonger(a, b) {
 function cleanLinks(urls) {
     const skipHosts = [
         'youtube.com', 'youtu.be', 'google.com', 'gstatic.com', 'ytimg.com',
+        'googleusercontent.com', 'googlevideo.com',
         'schema.org', 'w3.org', 'accounts.google.com', 'policies.google.com',
         'support.google.com', 'fonts.googleapis.com', 'play.google.com',
     ];
