@@ -1,44 +1,103 @@
 {
-  "title": "YouTube AI Tools Channel Scraper",
-  "type": "object",
-  "schemaVersion": 1,
-  "properties": {
-    "searchQuery": {
-      "title": "Search term",
-      "type": "string",
-      "description": "The keyword phrase to search YouTube channels for",
-      "editor": "textfield",
-      "default": "AI tools and automation"
+    "title": "YouTube Creator Contact Finder",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "apiKeys": {
+            "title": "YouTube Data API keys",
+            "type": "array",
+            "description": "One or more free keys from console.cloud.google.com. Create a project, enable YouTube Data API v3, then create an API key under Credentials. No billing card is needed for the free ten thousand units a day per key. Listing several keys lets one run stretch across more than one daily quota, moving to the next key automatically once one runs out.",
+            "editor": "stringList"
+        },
+        "channelHandles": {
+            "title": "Channel handles",
+            "type": "array",
+            "description": "Handles with or without the at sign, for example RobWalling. Each one costs one quota unit to resolve.",
+            "editor": "stringList"
+        },
+        "channelIds": {
+            "title": "Channel ids",
+            "type": "array",
+            "description": "Raw channel ids starting with UC. These cost nothing extra to resolve, so this is the cheapest way to supply targets.",
+            "editor": "stringList"
+        },
+        "channelUrls": {
+            "title": "Channel URLs",
+            "type": "array",
+            "description": "Full channel URLs in either the slash channel slash UC form or the at handle form. Both are handled.",
+            "editor": "stringList"
+        },
+        "searchQueries": {
+            "title": "Search queries",
+            "type": "array",
+            "description": "Keyword searches to discover new channels. Warning about cost: every single search call spends one hundred quota units out of your ten thousand a day per key, so one hundred searches empties one key entirely. Prefer supplying handles or ids when you already know your targets.",
+            "editor": "stringList",
+            "prefill": ["AI tools and automation"]
+        },
+        "maxChannelsPerQuery": {
+            "title": "Maximum channels per search query",
+            "type": "integer",
+            "description": "Upper limit on how many channels each search query returns.",
+            "default": 25,
+            "minimum": 1,
+            "maximum": 500
+        },
+        "minSubscribers": {
+            "title": "Minimum subscribers",
+            "type": "integer",
+            "description": "Lowest subscriber count a channel can have and still be kept. Channels outside this range are dropped before any website crawling happens, so no budget is wasted on them.",
+            "editor": "number",
+            "default": 1
+        },
+        "maxSubscribers": {
+            "title": "Maximum subscribers",
+            "type": "integer",
+            "description": "Highest subscriber count a channel can have and still be kept.",
+            "editor": "number",
+            "default": 600
+        },
+        "readChannelLinks": {
+            "title": "Read the links pinned to each channel",
+            "type": "boolean",
+            "description": "Reads the public About page to find the creator own website and social profiles. Turn this off to run faster on channels where the description already carries the website.",
+            "default": true
+        },
+        "crawlCreatorSites": {
+            "title": "Crawl the creator website",
+            "type": "boolean",
+            "description": "Visits the homepage of each discovered website plus any page that looks like a contact or about page. This is where most addresses are actually found.",
+            "default": true
+        },
+        "maxPagesPerSite": {
+            "title": "Maximum pages per website",
+            "type": "integer",
+            "description": "Budget of pages per website. Six is usually plenty because the address is almost always on the homepage, the contact page or the about page.",
+            "default": 6,
+            "minimum": 1,
+            "maximum": 25
+        },
+        "minimumScore": {
+            "title": "Minimum quality score to keep an address",
+            "type": "integer",
+            "description": "Every address is scored from zero to one hundred. Set this to fifty five to keep only medium and high confidence addresses, or seventy five for high confidence only. Zero keeps everything.",
+            "default": 0,
+            "minimum": 0,
+            "maximum": 100
+        },
+        "useApifyProxy": {
+            "title": "Use Apify Proxy",
+            "type": "boolean",
+            "description": "The free datacentre pool is enough here, because every page this actor touches is an ordinary public page with no bot wall on it.",
+            "default": true
+        },
+        "requestDelayMs": {
+            "title": "Pause between channel lookups in milliseconds",
+            "type": "integer",
+            "description": "A short human sized pause between About page reads. Lower it only if you are certain you need to.",
+            "default": 1200,
+            "minimum": 0,
+            "maximum": 15000
+        }
     },
-    "apiKeys": {
-      "title": "YouTube Data API keys",
-      "type": "array",
-      "description": "One or more YouTube Data API v3 keys. The actor rotates to the next one automatically once one runs out of daily quota.",
-      "editor": "stringList"
-    },
-    "minSubscribers": {
-      "title": "Minimum subscribers",
-      "type": "integer",
-      "description": "Lowest subscriber count a channel can have and still be saved",
-      "editor": "number",
-      "default": 1
-    },
-    "maxSubscribers": {
-      "title": "Maximum subscribers",
-      "type": "integer",
-      "description": "Highest subscriber count a channel can have and still be saved",
-      "editor": "number",
-      "default": 600
-    },
-    "maxChannels": {
-      "title": "Maximum channels to save (0 = unlimited)",
-      "type": "integer",
-      "description": "Stop after saving this many channels in this run. Zero means keep going until every API key runs out of quota for the day",
-      "editor": "number",
-      "default": 0
-    }
-  },
-  "required": [
-    "apiKeys"
-  ]
+    "required": ["apiKeys"]
 }
