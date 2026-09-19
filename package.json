@@ -1,14 +1,18 @@
 {
-  "name": "youtube-ai-tools-scraper",
-  "version": "0.0.1",
+  "name": "youtube-creator-contact-finder",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Collects publicly published contact addresses for YouTube creators from the channel description, the pinned channel links and the creator own website.",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
-    "apify": "^3.7.2",
-    "typescript": "^5.4.0",
-    "@types/node": "^20.0.0"
+    "apify": "^3.2.6",
+    "crawlee": "^3.11.5",
+    "cheerio": "^1.0.0"
   },
   "scripts": {
-    "start": "node dist/main.js",
-    "build": "tsc"
-  }
+    "start": "node src/main.js"
+  },
+  "license": "MIT"
 }
